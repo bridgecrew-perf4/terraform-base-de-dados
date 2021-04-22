@@ -10,16 +10,16 @@ provider "mysql" {
 resource "aws_db_instance" "database" {
   allocated_storage    = 20
   storage_type         = "gp2"
-  identifier           = "gusthavo"
+  identifier           = "user"
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t2.micro"
-  name                 = "dbgusthavo"
+  name                 = "dsuser"
   username             = var.user_username
   password             = var.password_username
   db_subnet_group_name = "teste"
   parameter_group_name = "default.mysql5.7"
-  vpc_security_group_ids = ["sg-0a22bc564c00ca591"]
+  vpc_security_group_ids = var.sg
   publicly_accessible = true
 }
 resource "mysql_database" "aplicacao" {
